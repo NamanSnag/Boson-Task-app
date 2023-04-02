@@ -1,0 +1,31 @@
+.homepage {
+    background-image: url('https://images.unsplash.com/photo-1680352960642-d701eb58323d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .homepage__cover {
+        background-color: rgba(103, 98, 98, 0.185);
+        padding: 140px 120px;
+        backdrop-filter: blur(6px);
+        text-align: center;
+        color: rgb(189, 186, 186);
+        font-size: 20px;
+
+        span {
+            color: white;
+            text-align: center;
+            font-size: 30px;
+            letter-spacing: 3px;
+            word-spacing: 6px;
+        }
+
+        &:hover {
+            backdrop-filter: blur(12px);
+        }
+    }
+}
