@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { FiEdit } from "react-icons/fi";
-import { RxCross1 } from "react-icons/rx";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Tasklist } from "../../components";
 
 import "./style.scss";
 
 const Dashbord = () => {
   const [tasks, setTasks] = useState([]);
 
-  const handleAddTask = () => {
-    // TODO: Implement
-  };
-
-  const handleEditTask = (id) => {
-    // TODO: Implement
-  };
-
-  const handleDeleteTask = (id) => {};
+  useEffect(() => {
+    axios.get('/tasks')
+      .then(response => {
+        setTasks(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [tasks]);
 
   return (
     <div className="task">
@@ -25,21 +25,9 @@ const Dashbord = () => {
           {tasks.length === 0 ? (
             <h2>No Task is Added</h2>
           ) : (
-            tasks.map((task, index) => {
-              return (
-                <li className="task__o">
-                  <div className="task__details">
-                    <p> {index} </p>
-                    <h2> task name</h2>
-                  </div>
-
-                  <div className="task__btn">
-                    <FiEdit className="edit" />
-                    <RxCross1 className="delete" />
-                  </div>
-                </li>
-              );
-            })
+            tasks.map((task, index) => (
+              <Tasklist task={task} index={index} key={index} tasks={tasks} setTasks={setTasks} />
+            ))
           )}
         </ul>
       </div>

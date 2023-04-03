@@ -24,10 +24,10 @@ const Rigester = () => {
     const URL = "/user/register"
     try {
       const res = await axios.post(URL, authData)
-      const user = res.details._id;
-      console.log(res)
-      localStorage.setItem("user", user);
-      
+      console.log(res.data.message)
+      if(res.status === 200) {
+        navigate('/login')
+      }
     } catch (error) {
       return error
     }
