@@ -1,6 +1,6 @@
-import Jwt from "jsonwebtoken";
+const Jwt = require("jsonwebtoken");
 
-export const verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
     const token = req.cookies.token;
 
     if(!token) return res.status(401).json({
@@ -18,15 +18,4 @@ export const verifyToken = (req, res, next) => {
     });
 }
 
-export const verifyUser = (req, res, next) => {
-    verifyToken(req, res,() => {
-        if(req.user.id === req.params.id){
-            next();
-        }else {
-            return res.status(403).json({
-                succcess: false,
-                message: "Token is invalid"
-            });
-        }
-    })
-};
+module.exports = verifyToken;

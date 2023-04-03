@@ -9,6 +9,7 @@ const taskSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   },
   {
@@ -16,6 +17,6 @@ const taskSchema = new mongoose.Schema(
   }
 );
 
-const Task = mongoose.model("task", taskSchema);
+const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;

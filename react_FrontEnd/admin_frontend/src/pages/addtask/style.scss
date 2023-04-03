@@ -1,0 +1,62 @@
+.addtask {
+  background-image: url("https://images.unsplash.com/photo-1680417265121-9b4bba3553b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  .addtask__form {
+    padding: 20px;
+    margin-top: 180px;
+    color: white;
+    background-color: rgba(10, 100, 63, 0.179);
+    backdrop-filter: blur(6px);
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    align-items: center;
+    border-radius: 2rem;
+
+    h1 {
+        text-align: center;
+        letter-spacing: 3px;
+        word-spacing: 10px;
+        margin-bottom: 20px;
+    }
+
+    .addtask__input {
+        width: 100%;
+        padding: 10px;
+        padding-left: 40px;
+        font-size: 20px;
+        outline: none;
+        border-radius: 2rem;
+        color: white;
+        background-color: rgba(45, 69, 90, 0.504);
+    }
+
+    .addtask__btnn {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        padding: 10px 16px;
+        border-radius: 2rem;
+        border: none;
+        background-color: rgba(240, 248, 255, 0.425);
+
+        .addtask__btn {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        &:hover {
+            background-color: gray;
+            color: green;
+        }
+    }
+  }
+}

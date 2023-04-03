@@ -1,33 +1,33 @@
 const User =  require("../models/user");
 const jwt =  require("jsonwebtoken");
 
-// Register User
-const registerUser = async (req, res, next) => {
-    const {email, password, name} = req.body;
+// Register user
+const registerUser =  async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
 
-    try {
-
-        const user = await User.findOne({email: email});
-
-        if(user){
-            return res.status(400).json({
-                message: 'User already exists, please try again'
-            });
-        }
-
-        await User.create({
-            name: name,
-            email: email,
-            password: password
-        });
-
-        return res.status(200).json({
-            message: "Successfully Sign Up"
-        });
-    } catch (error) {
-        next(error); 
+    // Check if user already exists
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser) {
+      return res.status(409).json({ message: 'User already exists' });
     }
-};
+
+    // Create user
+    const user = new User({
+      name: name,
+      email: email,
+      password: password,
+    });
+    
+    await user.save();
+
+    return res.status(201).json({
+      message: 'User registered',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 // Login User
 const login = async (req, res, next) => {
